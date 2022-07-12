@@ -1,0 +1,10 @@
+.vscode/
+.idea/
+.cache/
+build/
+__pycache__/
+*.pyc
+core
+
+Change.log
+
