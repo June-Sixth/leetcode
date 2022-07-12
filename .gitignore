@@ -5,6 +5,6 @@ build/
 __pycache__/
 *.pyc
 core
-
+*.exe
 Change.log
 
