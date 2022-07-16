@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 struct ListNode {
     int val;
@@ -6,25 +7,23 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
-ListNode* deleteDuplication(ListNode* head) {
-    ListNode* new_head = new ListNode(-1);
-    new_head->next = head;
-    ListNode* cur = new_head;
-    while(cur){
-        auto f = cur->next;
-        while(f && f->next && f->next->val == f->val){
-            auto c = f->next;
-            while(c && c->val == f->val) c = c->next;
-            f = c;
+
+ListNode* findKthToTail(ListNode* pListHead, int k) {
+    int n = 0;
+    for (auto p = pListHead; p; p = p->next) ++n;
+    if(k > n) return nullptr;
+    else{
+        auto p = pListHead;
+        for(int i = 0; i < n - k; ++i){
+            p = p->next;
         }
-        cur->next = f;
-        cur = cur->next;
+        return p;
     }
-    return new_head->next;
+
 }
 
 int main(){
-    int a[8] = {1,1,2,3,3,4,4,5};
+    int a[8] = {1,2,3,4,5};
     ListNode *head, *p, *s;
     head = new ListNode(a[0]);
     head->next = NULL;
@@ -36,7 +35,7 @@ int main(){
         p = p->next;
     }
     
-    p = deleteDuplication(head);
+    p = findKthToTail(head, 2);
     while(p){
         std::cout<<p->val<<" ";
         p = p->next;
