@@ -1,12 +1,6 @@
 #include <iostream>
 #include <vector>
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
-
+#include "ListNode.h"
 
 ListNode* findKthToTail(ListNode* pListHead, int k) {
     int n = 0;
@@ -23,7 +17,7 @@ ListNode* findKthToTail(ListNode* pListHead, int k) {
 }
 
 int main(){
-    int a[8] = {1,2,3,4,5};
+    int a[5] = {1,2,3,4,5};
     ListNode *head, *p, *s;
     head = new ListNode(a[0]);
     head->next = NULL;
@@ -36,10 +30,11 @@ int main(){
     }
     
     p = findKthToTail(head, 2);
-    while(p){
-        std::cout<<p->val<<" ";
-        p = p->next;
-    }
+    cout<<p->val<<endl;
+    // while(p){
+    //     std::cout<<p->val<<" ";
+    //     p = p->next;
+    // }
 
     return 0;
 }
